@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>battleGui</class>
+ <widget class="QWidget" name="battleGui">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>654</width>
+    <height>553</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>对战</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/ico/Resources/ICO.ico</normaloff>
+    <normalon>:/ico/Resources/ICO.ico</normalon>
+    <disabledoff>:/ico/Resources/ICO.ico</disabledoff>
+    <disabledon>:/ico/Resources/ICO.ico</disabledon>
+    <activeoff>:/ico/Resources/ICO.ico</activeoff>
+    <activeon>:/ico/Resources/ICO.ico</activeon>
+    <selectedoff>:/ico/Resources/ICO.ico</selectedoff>
+    <selectedon>:/ico/Resources/ICO.ico</selectedon>:/ico/Resources/ICO.ico</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout" rowstretch="0,0" columnstretch="5,1,0">
+   <item row="0" column="1">
+    <widget class="chessBoardGui" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>535</width>
+       <height>535</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>535</width>
+       <height>535</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0" rowminimumheight="0,0,0">
+      <item row="0" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButtonExit">
+        <property name="text">
+         <string>退出</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>保存</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="labelTime">
+        <property name="text">
+         <string>时间：</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>chessBoardGui</class>
+   <extends>QFrame</extends>
+   <header>chessboardgui.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButtonExit</sender>
+   <signal>clicked()</signal>
+   <receiver>battleGui</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>597</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>276</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

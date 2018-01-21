@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>Resources/black.png</file>
+        <file>Resources/chessboard.jpg</file>
+        <file>Resources/white.png</file>
+        <file>Resources/blackwin.JPG</file>
+        <file>Resources/whitewin.JPG</file>
+    </qresource>
+    <qresource prefix="/ico">
+        <file>Resources/ICO.ico</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,14 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+FiveChess::FiveChess(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+}
+
+FiveChess::~FiveChess()
+{
+    delete ui;
+}
