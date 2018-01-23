@@ -20,7 +20,7 @@
    <string>对战</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="fivechessresources.qrc">
     <normaloff>:/ico/Resources/ICO.ico</normaloff>
     <normalon>:/ico/Resources/ICO.ico</normalon>
     <disabledoff>:/ico/Resources/ICO.ico</disabledoff>
@@ -30,7 +30,7 @@
     <selectedoff>:/ico/Resources/ICO.ico</selectedoff>
     <selectedon>:/ico/Resources/ICO.ico</selectedon>:/ico/Resources/ICO.ico</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout" rowstretch="0,0" columnstretch="5,1,0">
+  <layout class="QGridLayout" name="gridLayout" rowstretch="0" columnstretch="5,1,0">
    <item row="0" column="1">
     <widget class="chessBoardGui" name="frame">
      <property name="minimumSize">
@@ -67,7 +67,7 @@
        </widget>
       </item>
       <item row="1" column="0" colspan="2">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="pushButtonSave">
         <property name="text">
          <string>保存</string>
         </property>
@@ -96,7 +96,9 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="fivechessresources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButtonExit</sender>

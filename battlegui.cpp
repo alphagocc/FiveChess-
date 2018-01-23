@@ -3,10 +3,20 @@
 
 battleGui::battleGui(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::battleGui)
+    ui(new Ui::battleGui),
+    timer(new QTimer)
 {
     ui->setupUi(this);
+    time=0;
     ui->frame->setData(chessBoardData);
+    timer->start(1000);
+    connect(ui->pushButtonSave,ui->pushButtonSave->clicked,this,[&]{
+        ui->frame->chessBoardData.saveBoard();
+    });
+    connect(timer,timer->timeout,this,[&]{
+        time++;
+        ui->labelTime->setText(tr("时间：%1秒").arg(time));
+    });
 }
 
 battleGui::~battleGui()
@@ -20,5 +30,6 @@ bool battleGui::close()
        p->show();
        return true;
 }
+
 
 

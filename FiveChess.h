@@ -21,6 +21,7 @@ private:
 
 public slots:
     void newFiveChessGame();
+    void loadFiveChessGame();
 public :
     chessBoardData_Process chessBoardData;
     void setData(chessBoardData_Process&data){this->chessBoardData=data;}

@@ -2,9 +2,11 @@
 #define CHESSBOARDDATA_PROCESS_H
 
 #include <QObject>
+#include <QCoreApplication>
 
 class chessBoardData_Process
 {
+    Q_DECLARE_TR_FUNCTIONS(chessBoardData_Process)
 public:
     chessBoardData_Process();
     enum dataType{
@@ -16,6 +18,8 @@ public:
     void dataPrint();
     void clear();
     bool searchWin(dataType chess);
+    bool saveBoard();
+    bool loadBoard();
 };
 
 #endif // CHESSBOARDDATA_PROCESS_H

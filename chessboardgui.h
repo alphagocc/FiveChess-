@@ -11,7 +11,6 @@ class chessBoardGui;
 class chessBoardGui : public QFrame
 {
     Q_OBJECT
-
 public:
     explicit chessBoardGui(QWidget *parent = 0);
     ~chessBoardGui();
@@ -24,8 +23,7 @@ private:
         onlyChessBoard = 0x00000000,
         chess          = 0x00000001,
         blackWin       = 0x00000002,
-        whiteWin       = 0x00000004,
-        over           = 0x00000008
+        whiteWin       = 0x00000004
     }opt;
 
 protected :

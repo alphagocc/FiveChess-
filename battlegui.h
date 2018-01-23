@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "chessboarddata_process.h"
+#include <QTimer>
 
 namespace Ui {
 class battleGui;
@@ -19,6 +20,8 @@ public:
 private:
     Ui::battleGui *ui;
     bool close();
+    QTimer *timer;
+    int time;
 public :
     chessBoardData_Process chessBoardData;
     void setData(chessBoardData_Process&data){this->chessBoardData=data;}

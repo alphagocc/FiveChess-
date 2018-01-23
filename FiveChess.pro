@@ -28,20 +28,23 @@ SOURCES += \
     battlegui.cpp \
     FiveChess.cpp \
     chessboardgui.cpp \
-    chessboarddata_process.cpp
- #   chessBoard.cpp
+    chessboarddata_process.cpp \
+    waitdialog.cpp
 
 HEADERS += \
     battlegui.h \
     FiveChess.h \
     chessboardgui.h \
-    chessboarddata_process.h
-#    chessBoard.h
+    chessboarddata_process.h \
+    waitdialog.h
 
 FORMS += \
     battlegui.ui \
     FiveChess.ui \
-    chessboardgui.ui
+    chessboardgui.ui \
+    waitdialog.ui
 
 RESOURCES += \
     fivechessresources.qrc
+
+ICON += Resources/ICO.ico
