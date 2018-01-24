@@ -23,8 +23,8 @@ public slots:
     void newFiveChessGame();
     void loadFiveChessGame();
 public :
-    chessBoardData_Process chessBoardData;
-    void setData(chessBoardData_Process&data){this->chessBoardData=data;}
+    chessBoardData_Process *chessBoardData;
+    void setData(chessBoardData_Process*data);
 };
 
 #endif // FIVECHESS_H

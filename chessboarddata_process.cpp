@@ -8,7 +8,9 @@
 
 chessBoardData_Process::chessBoardData_Process()
 {
-    clear();
+    clearData();
+    opt=chessBoardData_Process::onlyChessBoard;
+    flg=0;
     qDebug()<<"none:"<<none<<"black:"<<black<<"white:"<<white<<endl;
 }
 
@@ -23,7 +25,7 @@ void chessBoardData_Process::dataPrint()
     }
 }
 
-void chessBoardData_Process::clear()
+void chessBoardData_Process::clearData()
 {
     FOR(i,0,15)
         FOR(j,0,15)

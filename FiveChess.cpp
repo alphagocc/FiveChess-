@@ -2,6 +2,7 @@
 #include "ui_FiveChess.h"
 #include "battlegui.h"
 #include "waitdialog.h"
+#include <QDebug>
 
 FiveChess::FiveChess(QWidget *parent) :
     QMainWindow(parent),
@@ -27,9 +28,19 @@ void FiveChess::newFiveChessGame()
 
 void FiveChess::loadFiveChessGame()
 {
-    //chessBoardData.loadBoard();
-    //newFiveChessGame();
-    waitDialog *waitDialogWindow=new waitDialog(nullptr);
-    waitDialogWindow->setModal(true);
-    waitDialogWindow->show();
+    if(chessBoardData->loadBoard())
+    {
+            chessBoardData->opt=chessBoardData_Process::chess;
+            qDebug()<<"OK!"<<endl;
+            newFiveChessGame();
+            /*waitDialog *waitDialogWindow=new waitDialog(nullptr);
+            waitDialogWindow->setModal(true);
+            waitDialogWindow->show();*/
+    }
+}
+
+void FiveChess::setData(chessBoardData_Process *data)
+{
+    this->chessBoardData=data;
+    qDebug()<<"SetData0!"<<data<<endl;
 }
