@@ -18,21 +18,14 @@ public:
 private:
     Ui::chessBoardGui *ui;
     QPoint mouseOffset;
-    int flg;
-    enum optType{
-        onlyChessBoard = 0x00000000,
-        chess          = 0x00000001,
-        blackWin       = 0x00000002,
-        whiteWin       = 0x00000004
-    }opt;
 
 protected :
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
 public :
-    chessBoardData_Process chessBoardData;
-    void setData(chessBoardData_Process&data){this->chessBoardData=data;}
+    chessBoardData_Process *chessBoardData;
+    void setData(chessBoardData_Process *data);
 };
 
 #endif // CHESSBOARDGUI_H
