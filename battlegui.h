@@ -23,8 +23,8 @@ private:
     QTimer *timer;
     int time;
 public :
-    chessBoardData_Process chessBoardData;
-    void setData(chessBoardData_Process&data){this->chessBoardData=data;}
+    chessBoardData_Process *chessBoardData;
+    void setData(chessBoardData_Process*data);
 };
 
 #endif // BATTLEGUI_H

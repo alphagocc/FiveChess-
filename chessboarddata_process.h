@@ -14,9 +14,16 @@ public:
         white = 0x00000001,
         black = 0x00000002
     };
+    int flg;
+    enum optType{
+        onlyChessBoard = 0x00000000,
+        chess          = 0x00000001,
+        blackWin       = 0x00000002,
+        whiteWin       = 0x00000004
+    }opt;
     dataType data[15][15];
     void dataPrint();
-    void clear();
+    void clearData();
     bool searchWin(dataType chess);
     bool saveBoard();
     bool loadBoard();

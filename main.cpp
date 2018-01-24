@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     FiveChess w;
     chessBoardData_Process data=chessBoardData_Process();
-    w.setData(data);
+    w.setData(&data);
     w.show();
 
     return a.exec();
