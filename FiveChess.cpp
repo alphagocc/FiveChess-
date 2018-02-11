@@ -9,8 +9,8 @@ FiveChess::FiveChess(QWidget *parent) :
     ui(new Ui::FiveChess)
 {
     ui->setupUi(this);
-    QObject::connect(ui->pushButtonNew,ui->pushButtonNew->clicked,this,newFiveChessGame);
-    QObject::connect(ui->pushButtonLoad,ui->pushButtonLoad->clicked,this,loadFiveChessGame);
+    QObject::connect(ui->pushButtonNew,&QPushButton::clicked,this,&FiveChess::newFiveChessGame);
+    QObject::connect(ui->pushButtonLoad,&QPushButton::clicked,this,&FiveChess::loadFiveChessGame);
 }
 
 FiveChess::~FiveChess()

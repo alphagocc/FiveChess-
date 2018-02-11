@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>FiveChess</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="fivechessresources.qrc">
     <normaloff>:/ico/Resources/ICO.ico</normaloff>
     <normalon>:/ico/Resources/ICO.ico</normalon>
     <disabledoff>:/ico/Resources/ICO.ico</disabledoff>
@@ -35,7 +35,7 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string>新游戏</string>
+       <string>New Game</string>
       </property>
      </widget>
     </item>
@@ -48,7 +48,7 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string>载入</string>
+       <string>Load Game</string>
       </property>
      </widget>
     </item>
@@ -60,7 +60,7 @@
        </font>
       </property>
       <property name="text">
-       <string>五子棋小游戏</string>
+       <string>FiveChess</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -78,10 +78,36 @@
      <height>23</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuLang">
+    <property name="title">
+     <string>Language</string>
+    </property>
+    <addaction name="actionEnglish"/>
+    <addaction name="actionChinese"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+   </widget>
+   <addaction name="menuLang"/>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionEnglish">
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionChinese">
+   <property name="text">
+    <string>Chinese</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="fivechessresources.qrc"/>
+ </resources>
  <connections/>
 </ui>
