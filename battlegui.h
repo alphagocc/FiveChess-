@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "chessboarddata_process.h"
 #include <QTimer>
+#include <QTranslator>
 
 namespace Ui {
 class battleGui;
@@ -22,9 +23,11 @@ private:
     bool close();
     QTimer *timer;
     int time;
+	QTranslator * tsor;
 public :
     chessBoardData_Process *chessBoardData;
     void setData(chessBoardData_Process*data);
+	void setTranslator(QTranslator *tsor) { this->tsor = tsor; }
 };
 
 #endif // BATTLEGUI_H

@@ -9,4 +9,8 @@
     <qresource prefix="/ico">
         <file>Resources/ICO.ico</file>
     </qresource>
+    <qresource prefix="/lang">
+        <file>en_US.qm</file>
+        <file>zh_CN.qm</file>
+    </qresource>
 </RCC>

@@ -90,6 +90,9 @@
     <ClCompile Include="GeneratedFiles\qrc_fivechessresources.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="FiveChess.h">
@@ -152,6 +155,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_waitdialog.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
