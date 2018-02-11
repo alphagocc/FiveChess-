@@ -14,6 +14,26 @@
         <translation></translation>
     </message>
     <message>
+        <location filename="FiveChess.ui" line="83"/>
+        <source>Language</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="FiveChess.ui" line="90"/>
+        <source>About</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="FiveChess.ui" line="99"/>
+        <source>English</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="FiveChess.ui" line="104"/>
+        <source>Chinese</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="FiveChess.ui" line="14"/>
         <location filename="FiveChess.ui" line="63"/>
         <source>FiveChess</source>
@@ -43,8 +63,8 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="battlegui.cpp" line="20"/>
-        <source>Time：%1 Second</source>
+        <location filename="battlegui.cpp" line="21"/>
+        <source>Time:%1 Second</source>
         <translation></translation>
     </message>
 </context>

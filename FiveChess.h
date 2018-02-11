@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "chessboarddata_process.h"
+#include <QTranslator>
 
 namespace Ui {
 class FiveChess;
@@ -18,13 +19,15 @@ public:
 
 private:
     Ui::FiveChess *ui;
-
+	QTranslator *tsor;
 public slots:
     void newFiveChessGame();
     void loadFiveChessGame();
 public :
     chessBoardData_Process *chessBoardData;
     void setData(chessBoardData_Process*data);
+	void translateUi(int value);
+	void setTranslator(QTranslator *tsor) { this->tsor = tsor; }
 };
 
 #endif // FIVECHESS_H

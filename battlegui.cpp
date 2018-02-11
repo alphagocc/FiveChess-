@@ -1,5 +1,6 @@
 #include "battlegui.h"
 #include "ui_battlegui.h"
+#include "stdafx.h"
 #include <QDebug>
 
 battleGui::battleGui(QWidget *parent) :

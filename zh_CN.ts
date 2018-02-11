@@ -14,6 +14,26 @@
         <translation>加载</translation>
     </message>
     <message>
+        <location filename="FiveChess.ui" line="83"/>
+        <source>Language</source>
+        <translation>语言</translation>
+    </message>
+    <message>
+        <location filename="FiveChess.ui" line="90"/>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="FiveChess.ui" line="99"/>
+        <source>English</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="FiveChess.ui" line="104"/>
+        <source>Chinese</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="FiveChess.ui" line="14"/>
         <location filename="FiveChess.ui" line="63"/>
         <source>FiveChess</source>
@@ -43,9 +63,13 @@
         <translation>时间：</translation>
     </message>
     <message>
-        <location filename="battlegui.cpp" line="20"/>
         <source>Time：%1 Second</source>
-        <translation>时间：%1 秒</translation>
+        <translation type="vanished">时间：%1 秒</translation>
+    </message>
+    <message>
+        <location filename="battlegui.cpp" line="21"/>
+        <source>Time:%1 Second</source>
+        <translation>时间:%1 秒</translation>
     </message>
 </context>
 <context>
@@ -59,7 +83,7 @@
         <location filename="chessboarddata_process.cpp" line="63"/>
         <location filename="chessboarddata_process.cpp" line="96"/>
         <source>ChessBoardFile(*.chessbrd)</source>
-        <translation>棋盘文件</translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="chessboarddata_process.cpp" line="94"/>
