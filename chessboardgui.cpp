@@ -1,5 +1,6 @@
 #include "chessboardgui.h"
 #include "ui_chessboardgui.h"
+#include "stdafx.h"
 #include <QPainter>
 #include <QMouseEvent>
 #include <QPaintEvent>

@@ -1,5 +1,6 @@
 #include "battlegui.h"
 #include "ui_battlegui.h"
+#include "stdafx.h"
 #include <QDebug>
 
 battleGui::battleGui(QWidget *parent) :
@@ -12,12 +13,12 @@ battleGui::battleGui(QWidget *parent) :
     time=0;
     timer->start(1000);
 
-    connect(ui->pushButtonSave,ui->pushButtonSave->clicked,this,[&]{
+    connect(ui->pushButtonSave,&QPushButton::clicked,this,[&]{
         ui->frame->chessBoardData->saveBoard();
     });
-    connect(timer,timer->timeout,this,[&]{
+    connect(timer,&QTimer::timeout,this,[&]{
         time++;
-        ui->labelTime->setText(tr("时间：%1秒").arg(time));
+        ui->labelTime->setText(tr("Time:%1 Second").arg(time));
     });qDebug()<<"OK3"<<endl;
 }
 
