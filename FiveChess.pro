@@ -28,15 +28,15 @@ SOURCES += \
     battlegui.cpp \
     FiveChess.cpp \
     chessboardgui.cpp \
-    chessboarddata_process.cpp \
-    waitdialog.cpp
+    waitdialog.cpp \
+    chessBoardCore.cpp
 
 HEADERS += \
     battlegui.h \
     FiveChess.h \
     chessboardgui.h \
-    chessboarddata_process.h \
-    waitdialog.h
+    waitdialog.h \
+    chessBoardCore.h
 
 FORMS += \
     battlegui.ui \

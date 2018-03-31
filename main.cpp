@@ -1,5 +1,5 @@
 #include "FiveChess.h"
-#include "chessboarddata_process.h"
+#include "chessBoardCore.h"
 #include <QApplication>
 #include "chessboardgui.h"
 #include <QTranslator>
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	a.installTranslator(&tsor);
 
     FiveChess w;
-    chessBoardData_Process data=chessBoardData_Process();
+    chessBoardCore data;
 	w.setTranslator(&tsor);
     w.setData(&data);
     w.show();

@@ -1,6 +1,5 @@
 #include "battlegui.h"
 #include "ui_battlegui.h"
-#include "stdafx.h"
 #include <QDebug>
 
 battleGui::battleGui(QWidget *parent) :
@@ -14,7 +13,7 @@ battleGui::battleGui(QWidget *parent) :
     timer->start(1000);
 
     connect(ui->pushButtonSave,&QPushButton::clicked,this,[&]{
-        ui->frame->chessBoardData->saveBoard();
+        ui->frame->chessBoard->saveBoard();
     });
     connect(timer,&QTimer::timeout,this,[&]{
         time++;
@@ -34,11 +33,11 @@ bool battleGui::close()
        return true;
 }
 
-void battleGui::setData(chessBoardData_Process *data)
+void battleGui::setData(chessBoardCore *data)
 {
-    this->chessBoardData=data;
+    this->chessBoard=data;
     qDebug()<<"SetData!1"<<data<<endl;
-    ui->frame->setData(chessBoardData);
+    ui->frame->setData(chessBoard);
 }
 
 

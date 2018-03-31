@@ -2,7 +2,7 @@
 #define FIVECHESS_H
 
 #include <QMainWindow>
-#include "chessboarddata_process.h"
+#include "chessBoardCore.h"
 #include <QTranslator>
 
 namespace Ui {
@@ -24,8 +24,8 @@ public slots:
     void newFiveChessGame();
     void loadFiveChessGame();
 public :
-    chessBoardData_Process *chessBoardData;
-    void setData(chessBoardData_Process*data);
+    chessBoardCore *chessBoard;
+    void setData(chessBoardCore*data);
 	void translateUi(int value);
 	void setTranslator(QTranslator *tsor) { this->tsor = tsor; }
 };

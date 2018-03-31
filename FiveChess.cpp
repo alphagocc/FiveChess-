@@ -2,7 +2,7 @@
 #include "ui_FiveChess.h"
 #include "battlegui.h"
 #include "waitdialog.h"
-#include "stdafx.h"
+
 #include <QDebug>
 #include <QLocale>
 
@@ -31,16 +31,16 @@ void FiveChess::newFiveChessGame()
 {
     hide();
     battleGui *gameGui = new battleGui();
-    gameGui->setData(chessBoardData);
+    gameGui->setData(chessBoard);
 	gameGui->setTranslator(tsor);
     gameGui->show();
 }
 
 void FiveChess::loadFiveChessGame()
 {
-    if(chessBoardData->loadBoard())
+    if(chessBoard->loadBoard())
     {
-            chessBoardData->opt=chessBoardData_Process::chess;
+            chessBoard->setOpt(chessBoardCore::chess);
             qDebug()<<"OK!"<<endl;
             newFiveChessGame();
             /*waitDialog *waitDialogWindow=new waitDialog(nullptr);
@@ -49,9 +49,9 @@ void FiveChess::loadFiveChessGame()
     }
 }
 
-void FiveChess::setData(chessBoardData_Process *data)
+void FiveChess::setData(chessBoardCore *data)
 {
-    this->chessBoardData=data;
+    this->chessBoard=data;
     qDebug()<<"SetData0!"<<data<<endl;
 }
 

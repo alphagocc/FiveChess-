@@ -2,7 +2,7 @@
 #define CHESSBOARDGUI_H
 
 #include <QFrame>
-#include <chessboarddata_process.h>
+#include <chessBoardCore.h>
 
 namespace Ui {
 class chessBoardGui;
@@ -24,8 +24,8 @@ protected :
     void mousePressEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
 public :
-    chessBoardData_Process *chessBoardData;
-    void setData(chessBoardData_Process *data);
+    chessBoardCore *chessBoard;
+    void setData(chessBoardCore *data);
 };
 
 #endif // CHESSBOARDGUI_H

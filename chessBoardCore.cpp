@@ -1,4 +1,4 @@
-#include "chessboarddata_process.h"
+#include "chessBoardCore.h"
 #include <QDebug>
 #include <QFileDialog>
 #include <QJsonArray>
@@ -6,56 +6,53 @@
 #include <QJsonObject>
 #define FOR(i,j,k) for (int i=(j);i<(k);i++)
 
-chessBoardData_Process::chessBoardData_Process()
+chessBoardCore::chessBoardCore()
 {
-    clearData();
-    opt=chessBoardData_Process::onlyChessBoard;
-    flg=0;
-    qDebug()<<"none:"<<none<<"black:"<<black<<"white:"<<white<<endl;
+    init();
 }
 
-void chessBoardData_Process::dataPrint()
+void chessBoardCore::dataPrint()
 {
     FOR(i,0,15){
         FOR(j,0,15)
         {
-            qDebug()<<data[i][j];
+            qDebug()<<m_data[i][j];
         }
         qDebug()<<endl;
     }
 }
 
-void chessBoardData_Process::clearData()
+void chessBoardCore::clearData()
 {
     FOR(i,0,15)
         FOR(j,0,15)
         {
-            data[i][j]=none;
+            m_data[i][j]=none;
         }
 }
 
-bool chessBoardData_Process::searchWin(chessBoardData_Process::dataType chess)
+bool chessBoardCore::searchWin(chessBoardCore::dataType chess)
 {
     FOR(i,0,11)FOR(j,0,15)
-    if (data[i][j]==chess&&data[i+1][j]==chess&&data[i+2][j]==chess&&data[i+3][j]==chess&&data[i+4][j]==chess)
+    if (m_data[i][j]==chess&&m_data[i+1][j]==chess&&m_data[i+2][j]==chess&&m_data[i+3][j]==chess&&m_data[i+4][j]==chess)
         return true;
 
     FOR(i,0,15)FOR(j,0,11)
-    if (data[i][j]==chess&&data[i][j+1]==chess&&data[i][j+2]==chess&&data[i][j+3]==chess&&data[i][j+4]==chess)
+    if (m_data[i][j]==chess&&m_data[i][j+1]==chess&&m_data[i][j+2]==chess&&m_data[i][j+3]==chess&&m_data[i][j+4]==chess)
         return true;
 
     FOR(i,0,11)FOR(j,0,11)
-    if (data[i][j]==chess&&data[i+1][j+1]==chess&&data[i+2][j+2]==chess&&data[i+3][j+3]==chess&&data[i+4][j+4]==chess)
+    if (m_data[i][j]==chess&&m_data[i+1][j+1]==chess&&m_data[i+2][j+2]==chess&&m_data[i+3][j+3]==chess&&m_data[i+4][j+4]==chess)
         return true;
 
     FOR(i,0,11)FOR(j,4,15)
-    if (data[i][j]==chess&&data[i+1][j-1]==chess&&data[i+2][j-2]==chess&&data[i+3][j-3]==chess&&data[i+4][j-4]==chess)
+    if (m_data[i][j]==chess&&m_data[i+1][j-1]==chess&&m_data[i+2][j-2]==chess&&m_data[i+3][j-3]==chess&&m_data[i+4][j-4]==chess)
         return true;
 
     return false;
 }
 
-bool chessBoardData_Process::saveBoard()
+bool chessBoardCore::saveBoard()
 {
     QString fileName= QFileDialog::getSaveFileName(nullptr,
                                            tr("Save Chess Board File"),
@@ -73,7 +70,7 @@ bool chessBoardData_Process::saveBoard()
             FOR(j,0,15)
             {
                 QJsonObject tempObj;
-                tempObj[QString("ColChess%1").arg(j)]=data[i][j];
+                tempObj[QString("ColChess%1").arg(j)]=m_data[i][j];
                 jsonArrTemp.append(tempObj);
             }
             Temp[QString("RowChess%1").arg(i)]=jsonArrTemp;
@@ -88,7 +85,7 @@ bool chessBoardData_Process::saveBoard()
     return true;
 }
 
-bool chessBoardData_Process::loadBoard()
+bool chessBoardCore::loadBoard()
 {
     QString filename = QFileDialog::getOpenFileName(nullptr,
                                                     tr("Open Chess Board File"),
@@ -115,17 +112,17 @@ bool chessBoardData_Process::loadBoard()
                 switch (tempData) {
                 case 0:
                 {
-                    data[i][j]=none;
+                    m_data[i][j]=none;
                     break;
                 }
                 case 2:
                 {
-                    data[i][j]=black;
+                    m_data[i][j]=black;
                     break;
                 }
                 case 1:
                 {
-                    data[i][j]=white;
+                    m_data[i][j]=white;
                     break;
                 }
                 default:
@@ -137,4 +134,12 @@ bool chessBoardData_Process::loadBoard()
         file.close();
     }
     return true;
+}
+
+void chessBoardCore::init()
+{
+    clearData();
+    m_opt=chessBoardCore::onlyChessBoard;
+    m_flag=0;
+    qDebug()<<"none:"<<none<<"black:"<<black<<"white:"<<white<<endl;
 }

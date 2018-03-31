@@ -2,7 +2,7 @@
 #define BATTLEGUI_H
 
 #include <QWidget>
-#include "chessboarddata_process.h"
+#include "chessBoardCore.h"
 #include <QTimer>
 #include <QTranslator>
 
@@ -25,8 +25,8 @@ private:
     int time;
 	QTranslator * tsor;
 public :
-    chessBoardData_Process *chessBoardData;
-    void setData(chessBoardData_Process*data);
+    chessBoardCore *chessBoard;
+    void setData(chessBoardCore*data);
 	void setTranslator(QTranslator *tsor) { this->tsor = tsor; }
 };
 
