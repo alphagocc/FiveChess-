@@ -47,8 +47,6 @@ FORMS += \
 RESOURCES += \
     fivechessresources.qrc
 
-ICON += Resources/ICO.ico
-
 TRANSLATIONS += zh_CN.ts \
     en_US.ts
 

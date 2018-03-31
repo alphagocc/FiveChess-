@@ -1,7 +1,6 @@
 #include "FiveChess.h"
 #include "chessBoardCore.h"
 #include <QApplication>
-#include "chessboardgui.h"
 #include <QTranslator>
 
 int main(int argc, char *argv[])
