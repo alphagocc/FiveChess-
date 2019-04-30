@@ -22,22 +22,20 @@ void chessBoardGui::paintEvent(QPaintEvent *)
 {
     ChessBoardCore::PaintOptType opt=chessBoard.getPaintOpt();
     chessBoard.dataPrint();
-    auto f=[&]{parentWidget()->close();};
-    qDebug()<<"OK1"<<endl;
+    auto closeF=[&]{parentWidget()->close();};
     QPainter painter;
     painter.begin(this);
     painter.drawImage(QPoint(0,0),QImage(":/img/Resources/chessboard.jpg"));
     if (opt==ChessBoardCore::PaintOptType::blackWin)
     {
         painter.drawImage(QRect(535/2-200,535/2-60,400,120),QImage(":/img/Resources/blackwin.JPG"));
-        QTimer::singleShot(2000,this,f);
+        QTimer::singleShot(2000,this,closeF);
     }
     if (opt==ChessBoardCore::PaintOptType::whiteWin)
     {
         painter.drawImage(QRect(535/2-200,535/2-60,400,120),QImage(":/img/Resources/whitewin.JPG"));
-        QTimer::singleShot(2000,this,f);
+        QTimer::singleShot(2000,this,closeF);
     }
-    qDebug()<<"OK2"<<endl;
     if (opt==ChessBoardCore::PaintOptType::chess){
     for (int i=0;i<15;i++)
         for (int j=0;j<15;j++)
@@ -58,9 +56,9 @@ void chessBoardGui::mousePressEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton){
         mouseOffset=event->globalPos() - pos()-parentWidget()->pos()-QPoint(30,54);
     }
-    qDebug()<<(mouseOffset.x())<<" "<<(mouseOffset.y())<<endl;
+    qDebug()<<(mouseOffset.x())<<" "<<(mouseOffset.y());
     int tx=(mouseOffset.x()+17)/35,ty=(mouseOffset.y()+17)/35;
-    qDebug()<<tx<<" "<<ty<<endl;
+    qDebug()<<tx<<" "<<ty;
 
     if (chessBoard.getPointData(tx,ty)==ChessBoardCore::DataType::none){
     chessBoard.setPointData(tx,ty,flag?ChessBoardCore::DataType::white:ChessBoardCore::DataType::black);

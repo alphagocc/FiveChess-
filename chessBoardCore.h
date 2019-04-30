@@ -24,7 +24,7 @@ public:
     ~ChessBoardCore();
 private :
     int m_flag;
-    int64_t usedTime;
+    int64_t m_usedTime;
     PaintOptType m_opt;
     DataType m_data[15][15];
     mutable QMutex mutex;
@@ -58,8 +58,8 @@ public :
     }
     PaintOptType getPaintOpt(){QMutexLocker locker(&mutex);return m_opt;}
     int getFlag(){QMutexLocker locker(&mutex);return m_flag;}
-    int64_t getUsedTime(){return usedTime;}
-    void addUsedTime(){usedTime++;}
+    int64_t getUsedTime(){return m_usedTime;}
+    void addUsedTime(){m_usedTime++;}
 };
 extern ChessBoardCore chessBoard;
 #endif // CHESSBOARDCORE_H

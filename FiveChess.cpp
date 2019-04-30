@@ -1,4 +1,4 @@
-#include "FiveChess.h"
+#include "fivechess.h"
 #include "ui_FiveChess.h"
 #include "battlegui.h"
 #include "waitdialog.h"
@@ -47,6 +47,9 @@ void FiveChess::loadFiveChessGame()
             /*waitDialog *waitDialogWindow=new waitDialog(nullptr);
             waitDialogWindow->setModal(true);
             waitDialogWindow->show();*/
+    }else
+    {
+
     }
 }
 
