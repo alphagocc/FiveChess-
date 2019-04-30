@@ -1,47 +1,65 @@
-#ifndef CHESSBOARDDATA_PROCESS_H
-#define CHESSBOARDDATA_PROCESS_H
+#ifndef CHESSBOARDCORE_H
+#define CHESSBOARDCORE_H
 
 #include <QObject>
 #include <QCoreApplication>
+#include <QMutex>
 
-class chessBoardCore
+class ChessBoardCore : public QObject
 {
-private :
-    Q_DECLARE_TR_FUNCTIONS(chessBoardCore)
+    Q_OBJECT
 public:
-    chessBoardCore();
-    enum dataType{
-        none  = 0x00000000,
-        white = 0x00000001,
-        black = 0x00000002
+    ChessBoardCore();
+    enum class DataType : int {
+        none  = 0x00,
+        white = 0x01,
+        black = 0x02
     };
-    enum paintOptType{
-        onlyChessBoard = 0x00000000,
-        chess          = 0x00000001,
-        blackWin       = 0x00000002,
-        whiteWin       = 0x00000004
+    enum class PaintOptType : int {
+        onlyChessBoard = 0x00,
+        chess          = 0x01,
+        blackWin       = 0x02,
+        whiteWin       = 0x04
     };
+    ~ChessBoardCore();
 private :
     int m_flag;
-    paintOptType m_opt;
-    dataType m_data[15][15];
+    int64_t usedTime;
+    PaintOptType m_opt;
+    DataType m_data[15][15];
+    mutable QMutex mutex;
+signals:
+    void dataChanged(int x,int y,DataType d);
 public :
     void dataPrint();
     void clearData();
-    bool searchWin(dataType chess);
+    bool searchWin(DataType chess);
     bool saveBoard();
     bool loadBoard();
     void init();
-    bool setPointData(int x,int y,dataType d)
-    {if(x<0||y<0||x>=15||y>=15)
-            return false;
-    else m_data[x][y]=d;
-    return true;}
-    void setOpt(paintOptType o){m_opt=o;}
-    void setFlag(int f){m_flag=f;}
-    dataType getPointData(int x,int y){return m_data[x][y];}
-    paintOptType getPaintOpt(){return m_opt;}
-    int getFlag(){return m_flag;}
+    bool setPointData(int x,int y,DataType d)
+    {
+        if(x<0||y<0||x>=15||y>=15)
+                return false;
+        else
+        {
+            QMutexLocker locker(&mutex);
+            m_data[x][y]=d;
+            emit dataChanged(x,y,d);
+            return true;
+        }
+    }
+    void setOpt(PaintOptType o){QMutexLocker locker(&mutex);m_opt=o;}
+    void setFlag(int f){QMutexLocker locker(&mutex);m_flag=f;}
+    DataType getPointData(int x,int y){
+        QMutexLocker locker(&mutex);
+        if(x<0||y<0||x>=15||y>=15) throw std::out_of_range("Out Of Range Error");
+        return m_data[x][y];
+    }
+    PaintOptType getPaintOpt(){QMutexLocker locker(&mutex);return m_opt;}
+    int getFlag(){QMutexLocker locker(&mutex);return m_flag;}
+    int64_t getUsedTime(){return usedTime;}
+    void addUsedTime(){usedTime++;}
 };
-
-#endif // CHESSBOARDDATA_PROCESS_H
+extern ChessBoardCore chessBoard;
+#endif // CHESSBOARDCORE_H

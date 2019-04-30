@@ -9,16 +9,17 @@ battleGui::battleGui(QWidget *parent) :
 {
     qDebug()<<"OK2"<<endl;
     ui->setupUi(this);
-    time=0;
     timer->start(1000);
 
     connect(ui->pushButtonSave,&QPushButton::clicked,this,[&]{
-        ui->frame->chessBoard->saveBoard();
+        chessBoard.saveBoard();
     });
     connect(timer,&QTimer::timeout,this,[&]{
-        time++;
-        ui->labelTime->setText(tr("Time:%1 Second").arg(time));
-    });qDebug()<<"OK3"<<endl;
+        chessBoard.addUsedTime();
+        ui->labelTime->setText(tr("Time:%1 Second").arg(chessBoard.getUsedTime()));
+    });
+
+    qDebug()<<"OK3";
 }
 
 battleGui::~battleGui()
@@ -31,13 +32,6 @@ bool battleGui::close()
        QWidget *p = parentWidget();
        p->show();
        return true;
-}
-
-void battleGui::setData(chessBoardCore *data)
-{
-    this->chessBoard=data;
-    qDebug()<<"SetData!1"<<data<<endl;
-    ui->frame->setData(chessBoard);
 }
 
 

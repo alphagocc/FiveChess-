@@ -2,7 +2,7 @@
 #define BATTLEGUI_H
 
 #include <QWidget>
-#include "chessBoardCore.h"
+#include "chessboardcore.h"
 #include <QTimer>
 #include <QTranslator>
 
@@ -15,18 +15,15 @@ class battleGui : public QWidget
     Q_OBJECT
 
 public:
-    explicit battleGui(QWidget *parent = 0);
+    explicit battleGui(QWidget *parent = nullptr);
     ~battleGui();
 
 private:
     Ui::battleGui *ui;
     bool close();
     QTimer *timer;
-    int time;
 	QTranslator * tsor;
 public :
-    chessBoardCore *chessBoard;
-    void setData(chessBoardCore*data);
 	void setTranslator(QTranslator *tsor) { this->tsor = tsor; }
 };
 

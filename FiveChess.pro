@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -29,20 +29,25 @@ SOURCES += \
     FiveChess.cpp \
     chessboardgui.cpp \
     waitdialog.cpp \
-    chessBoardCore.cpp
+    networksettingdialog.cpp \
+    networkthread.cpp \
+    chessboardcore.cpp
 
 HEADERS += \
     battlegui.h \
     FiveChess.h \
     chessboardgui.h \
     waitdialog.h \
-    chessBoardCore.h
+    networksettingdialog.h \
+    networkthread.h \
+    chessboardcore.h
 
 FORMS += \
     battlegui.ui \
     FiveChess.ui \
     chessboardgui.ui \
-    waitdialog.ui
+    waitdialog.ui \
+    networksettingdialog.ui
 
 RESOURCES += \
     fivechessresources.qrc

@@ -1,37 +1,44 @@
-#include "chessBoardCore.h"
+#include "chessboardcore.h"
 #include <QDebug>
 #include <QFileDialog>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #define FOR(i,j,k) for (int i=(j);i<(k);i++)
+// 共享的全局变量定义
+ChessBoardCore chessBoard;
 
-chessBoardCore::chessBoardCore()
+ChessBoardCore::ChessBoardCore()
 {
     init();
 }
 
-void chessBoardCore::dataPrint()
+ChessBoardCore::~ChessBoardCore()
+{
+
+}
+
+void ChessBoardCore::dataPrint()
 {
     FOR(i,0,15){
         FOR(j,0,15)
         {
-            qDebug()<<m_data[i][j];
+            qDebug()<<static_cast<int>(m_data[i][j]);
         }
         qDebug()<<endl;
     }
 }
 
-void chessBoardCore::clearData()
+void ChessBoardCore::clearData()
 {
     FOR(i,0,15)
         FOR(j,0,15)
         {
-            m_data[i][j]=none;
+            m_data[i][j]=DataType::none;
         }
 }
 
-bool chessBoardCore::searchWin(chessBoardCore::dataType chess)
+bool ChessBoardCore::searchWin(ChessBoardCore::DataType chess)
 {
     FOR(i,0,11)FOR(j,0,15)
     if (m_data[i][j]==chess&&m_data[i+1][j]==chess&&m_data[i+2][j]==chess&&m_data[i+3][j]==chess&&m_data[i+4][j]==chess)
@@ -52,7 +59,7 @@ bool chessBoardCore::searchWin(chessBoardCore::dataType chess)
     return false;
 }
 
-bool chessBoardCore::saveBoard()
+bool ChessBoardCore::saveBoard()
 {
     QString fileName= QFileDialog::getSaveFileName(nullptr,
                                            tr("Save Chess Board File"),
@@ -62,6 +69,7 @@ bool chessBoardCore::saveBoard()
         QFile file(fileName);
         if (!file.open(QFile::Text|QFile::WriteOnly))
         {qDebug()<<file.errorString()<<endl;return false;}
+        file.write(QString("%1\n").arg(usedTime).toUtf8());
         QJsonObject jsonObj;
         QJsonArray jsonArr;
         FOR(i,0,15){
@@ -70,7 +78,7 @@ bool chessBoardCore::saveBoard()
             FOR(j,0,15)
             {
                 QJsonObject tempObj;
-                tempObj[QString("ColChess%1").arg(j)]=m_data[i][j];
+                tempObj[QString("ColChess%1").arg(j)]=static_cast<int>(m_data[i][j]);
                 jsonArrTemp.append(tempObj);
             }
             Temp[QString("RowChess%1").arg(i)]=jsonArrTemp;
@@ -85,7 +93,7 @@ bool chessBoardCore::saveBoard()
     return true;
 }
 
-bool chessBoardCore::loadBoard()
+bool ChessBoardCore::loadBoard()
 {
     QString filename = QFileDialog::getOpenFileName(nullptr,
                                                     tr("Open Chess Board File"),
@@ -99,6 +107,7 @@ bool chessBoardCore::loadBoard()
             qDebug()<<file.errorString()<<endl;
             return false;
         }
+        usedTime=file.readLine().toInt();
         QJsonDocument jsonDoc(QJsonDocument::fromJson(file.readAll()));
         QJsonObject jsonObj=jsonDoc.object();
         QJsonArray jsonArr=jsonObj["ChessBoard"].toArray();
@@ -112,17 +121,17 @@ bool chessBoardCore::loadBoard()
                 switch (tempData) {
                 case 0:
                 {
-                    m_data[i][j]=none;
+                    m_data[i][j]=DataType::none;
                     break;
                 }
                 case 2:
                 {
-                    m_data[i][j]=black;
+                    m_data[i][j]=DataType::black;
                     break;
                 }
                 case 1:
                 {
-                    m_data[i][j]=white;
+                    m_data[i][j]=DataType::white;
                     break;
                 }
                 default:
@@ -132,14 +141,18 @@ bool chessBoardCore::loadBoard()
         }
         dataPrint();
         file.close();
+        return true;
     }
-    return true;
+    else
+    {
+        return false;
+    }
 }
 
-void chessBoardCore::init()
+void ChessBoardCore::init()
 {
     clearData();
-    m_opt=chessBoardCore::onlyChessBoard;
+    m_opt=ChessBoardCore::PaintOptType::onlyChessBoard;
     m_flag=0;
-    qDebug()<<"none:"<<none<<"black:"<<black<<"white:"<<white<<endl;
+    usedTime=0;
 }

@@ -2,6 +2,8 @@
 #include "ui_FiveChess.h"
 #include "battlegui.h"
 #include "waitdialog.h"
+#include "networksettingdialog.h"
+#include "networkthread.h"
 
 #include <QDebug>
 #include <QLocale>
@@ -15,7 +17,7 @@ FiveChess::FiveChess(QWidget *parent) :
 	QObject::connect(ui->pushButtonLoad, &QPushButton::clicked, this, &FiveChess::loadFiveChessGame);
 	connect(ui->actionEnglish, &QAction::triggered, this, [&] {
 		translateUi(QLocale::UnitedStates);
-		qDebug() << "!!#3" << endl;
+        qDebug() << "!!#en_us" << endl;
 	});
 	connect(ui->actionChinese, &QAction::triggered, this, [&] {
 		translateUi(QLocale::China);
@@ -31,28 +33,21 @@ void FiveChess::newFiveChessGame()
 {
     hide();
     battleGui *gameGui = new battleGui();
-    gameGui->setData(chessBoard);
 	gameGui->setTranslator(tsor);
     gameGui->show();
 }
 
 void FiveChess::loadFiveChessGame()
 {
-    if(chessBoard->loadBoard())
+    if(chessBoard.loadBoard())
     {
-            chessBoard->setOpt(chessBoardCore::chess);
+            chessBoard.setOpt(ChessBoardCore::PaintOptType::chess);
             qDebug()<<"OK!"<<endl;
             newFiveChessGame();
             /*waitDialog *waitDialogWindow=new waitDialog(nullptr);
             waitDialogWindow->setModal(true);
             waitDialogWindow->show();*/
     }
-}
-
-void FiveChess::setData(chessBoardCore *data)
-{
-    this->chessBoard=data;
-    qDebug()<<"SetData0!"<<data<<endl;
 }
 
 void FiveChess::translateUi(int value)
