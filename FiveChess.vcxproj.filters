@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res;</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts;xlf</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts;xlf</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="battlegui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chessboardcore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chessboardgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fivechess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="networksettingdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="networkthread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="waitdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="battlegui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="chessboardcore.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="chessboardgui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="fivechess.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClInclude Include="networksettingdialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="networkthread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <QtMoc Include="waitdialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    
+    
+    
+    
+    
+    
+    
+    
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    
+    
+    
+    
+    <ClInclude Include="ui_FiveChess.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_battlegui.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_chessboardgui.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_networksettingdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_waitdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="en_US.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+    <None Include="zh_CN.ts">
+      <Filter>Translation Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="FiveChess.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="battlegui.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="chessboardgui.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="networksettingdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="waitdialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ICO.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\black.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\blackwin.JPG">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\chessboard.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="en_US.qm">
+      <Filter>Resource Files</Filter>
+    </None>
+    <QtRcc Include="fivechessresources.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <None Include="Resources\white.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\whitewin.JPG">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="zh_CN.qm">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

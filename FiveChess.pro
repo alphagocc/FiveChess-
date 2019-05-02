@@ -26,20 +26,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     battlegui.cpp \
-    FiveChess.cpp \
+    fivechess.cpp \
     chessboardgui.cpp \
     waitdialog.cpp \
     networksettingdialog.cpp \
-    networkthread.cpp \
+    serverthread.cpp \
+	clientthread.cpp \
     chessboardcore.cpp
 
 HEADERS += \
     battlegui.h \
-    FiveChess.h \
+    fivechess.h \
     chessboardgui.h \
     waitdialog.h \
     networksettingdialog.h \
-    networkthread.h \
+    serverthread.h \
+	clientthread.h \
     chessboardcore.h
 
 FORMS += \
