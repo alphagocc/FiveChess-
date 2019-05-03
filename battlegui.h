@@ -28,5 +28,4 @@ class battleGui : public QWidget
   public:
     void setTranslator(QTranslator* tsor) { this->tsor = tsor; }
 };
-
 #endif // BATTLEGUI_H

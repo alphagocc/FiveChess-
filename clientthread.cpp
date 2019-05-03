@@ -1,32 +1,45 @@
 #include "clientthread.h"
+#include "chessboardcore.h"
 #include <QDebug>
 
-clientThread::clientThread(QObject *parent):
-	QThread(parent)
-{
+ClientThread* clientThread;
 
+ClientThread::ClientThread(QObject* parent) : QThread(parent) { init(); }
+
+void ClientThread::run()
+{
+    m_tcpSocket = new QTcpSocket();
+    m_tcpSocket->abort();
+    m_tcpSocket->connectToHost("127.0.0.1", 23333);
 }
 
-void clientThread::run()
+void ClientThread::readMessage()
 {
-	m_tcpSocket = new QTcpSocket();
-	m_tcpSocket->abort();
-	m_tcpSocket->connectToHost("127.0.0.1", 23333);
-	connect(m_tcpSocket,
-		&QTcpSocket::readyRead,
-		this,
-        &clientThread::readMessage);
+    QByteArray msg = m_tcpSocket->readAll();
+    qDebug() << msg;
+    if (msg.size() < 3) throw std::out_of_range("Too short");
+    int                      x = msg[0];
+    int                      y = msg[1];
+    ChessBoardCore::DataType d =
+        static_cast<ChessBoardCore::DataType>(static_cast<int>(msg[2]));
+    if (!chessBoard.setPointData(x, y, d, 0)) { throw std::exception("Data Error"); }
 }
 
-QByteArray clientThread::readMessage()
+void ClientThread::sendMessage(QByteArray& msg)
 {
-	QByteArray msg = m_tcpSocket->readAll();
-	qDebug() << msg;
-	return msg;
+    qDebug() << msg;
+    m_tcpSocket->write(msg);
 }
 
-void clientThread::sendMessage(QByteArray & msg)
+void ClientThread::init()
 {
-	qDebug() << msg;
-	m_tcpSocket->write(msg);
+    connect(m_tcpSocket, &QTcpSocket::readyRead, this, &ClientThread::readMessage);
+    connect(&chessBoard, &ChessBoardCore::dataChanged, this,
+            [&](const int x, const int y, const ChessBoardCore::DataType d) {
+                QByteArray ba;
+                ba.append(x);
+                ba.append(y);
+                ba.append(static_cast<int>(d));
+                sendMessage(ba);
+            });
 }

@@ -4,18 +4,19 @@
 #include <QObject>
 #include <QThread>
 #include <QtNetwork>
-class clientThread :
-	public QThread
+class ClientThread : public QThread
 {
-	Q_OBJECT
+    Q_OBJECT
 
-public:
-	explicit clientThread(QObject * parent = nullptr);
-	void run();
-	QByteArray readMessage();
-	void sendMessage(QByteArray & msg);
-private :
-	QTcpSocket *m_tcpSocket;
+  public:
+    explicit ClientThread(QObject* parent = nullptr);
+    void run();
+    void readMessage();
+    void sendMessage(QByteArray& msg);
+
+  protected:
+    QTcpSocket* m_tcpSocket;
+    void        init();
 };
-
+extern ClientThread* clientThread;
 #endif CLIENTTHREAD_H

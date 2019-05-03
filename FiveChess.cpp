@@ -10,12 +10,10 @@
 #include <QDebug>
 #include <QLocale>
 
-FiveChess::FiveChess(QWidget* parent)
-    : QMainWindow(parent), ui(new Ui::FiveChess)
+FiveChess::FiveChess(QWidget* parent) : QMainWindow(parent), ui(new Ui::FiveChess)
 {
     ui->setupUi(this);
-    connect(ui->pushButtonNew, &QPushButton::clicked, this,
-            &FiveChess::newFiveChessGame);
+    connect(ui->pushButtonNew, &QPushButton::clicked, this, &FiveChess::newFiveChessGame);
     connect(ui->pushButtonLoad, &QPushButton::clicked, this,
             &FiveChess::loadFiveChessGame);
     connect(ui->actionEnglish, &QAction::triggered, this, [&] {
@@ -53,13 +51,19 @@ void FiveChess::newNetworkFiveChessGame()
 {
     QDialog*              chooseDialog   = new QDialog;
     Ui::ChooseCorSDialog* chooseDialogUi = new Ui::ChooseCorSDialog;
-
-    connect(chooseDialogUi->clientPushButton, &QPushButton::clicked, this,
-            [&] { chessBoard.setPlayMode(ChessBoardCore::PlayMode::client); });
-    connect(chooseDialogUi->serverPushButton, &QPushButton::clicked, this,
-            [&] { chessBoard.setPlayMode(ChessBoardCore::PlayMode::server); });
-
     chooseDialogUi->setupUi(chooseDialog);
+
+    connect(chooseDialogUi->clientPushButton, &QPushButton::clicked, this, [&] {
+        clientThread = new ClientThread;
+        clientThread->run();
+        chessBoard.setPlayMode(ChessBoardCore::PlayMode::client);
+    });
+    connect(chooseDialogUi->serverPushButton, &QPushButton::clicked, this, [&] {
+        serverThread = new ServerThread;
+        serverThread->run();
+        chessBoard.setPlayMode(ChessBoardCore::PlayMode::server);
+    });
+
     chooseDialog->setModal(true);
     chooseDialog->show();
     newFiveChessGame();

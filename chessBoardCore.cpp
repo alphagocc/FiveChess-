@@ -134,3 +134,16 @@ void ChessBoardCore::init()
     m_flag     = 0;
     m_usedTime = 0;
 }
+
+bool ChessBoardCore::setPointData(int x, int y, DataType d,int s=1)
+{
+    if (x < 0 || y < 0 || x >= 15 || y >= 15)
+        return false;
+    else
+    {
+        QMutexLocker locker(&mutex);
+        m_data[x][y] = d;
+        if (s==1) emit dataChanged(x, y, d);
+        return true;
+    }
+}

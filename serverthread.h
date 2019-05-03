@@ -1,24 +1,22 @@
 #ifndef SERVERTHREAD_H
 #define SERVERTHREAD_H
 
+#include "clientthread.h"
 #include <QObject>
 #include <QThread>
 #include <QtNetwork>
 
-class serverThread : public QThread
+class ServerThread : public ClientThread
 {
-	Q_OBJECT
+    Q_OBJECT
 
-public:
-    explicit serverThread(QObject * parent=0);
+  public:
+    explicit ServerThread(QObject* parent = 0);
     void run();
-	QByteArray readMessage();
-	void sendMessage(QByteArray & msg);
-private :
-    QTcpServer *m_tcpServer;
-    QTcpSocket *m_tcpSocket;
-	void newConnect();
+
+  private:
+    QTcpServer* m_tcpServer;
+    void        newConnect();
 };
-
+extern ServerThread *serverThread;
 #endif // SERVERTHREAD_H
-

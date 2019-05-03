@@ -46,23 +46,13 @@ class ChessBoardCore : public QObject
     bool     saveBoard();
     bool     loadBoard();
     void     init();
+    bool     setPointData(int x, int y, DataType d, int s);
     int64_t  getUsedTime() { return m_usedTime; }
     void     addUsedTime() { m_usedTime++; }
     void     setPlayMode(PlayMode m) { m_mode = m; }
     PlayMode getPlayMode() { return m_mode; }
 
-    bool setPointData(int x, int y, DataType d)
-    {
-        if (x < 0 || y < 0 || x >= 15 || y >= 15)
-            return false;
-        else
-        {
-            QMutexLocker locker(&mutex);
-            m_data[x][y] = d;
-            emit dataChanged(x, y, d);
-            return true;
-        }
-    }
+    bool setPointData(int x, int y, DataType d);
     void setOpt(PaintOptType o)
     {
         QMutexLocker locker(&mutex);

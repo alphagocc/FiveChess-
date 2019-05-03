@@ -6,8 +6,7 @@
 #include <QPainter>
 #include <QTimer>
 
-chessBoardGui::chessBoardGui(QWidget* parent)
-    : QFrame(parent), ui(new Ui::chessBoardGui)
+chessBoardGui::chessBoardGui(QWidget* parent) : QFrame(parent), ui(new Ui::chessBoardGui)
 {
     ui->setupUi(this);
 }
@@ -40,12 +39,10 @@ void chessBoardGui::paintEvent(QPaintEvent*)
             for (int j = 0; j < 15; j++)
             {
                 // qDebug()<<"i:"<<i<<"j:"<<j<<"data:"<<static_cast<int>(chessBoard.getPointData(i,j))<<endl;
-                if (chessBoard.getPointData(i, j) ==
-                    ChessBoardCore::DataType::black)
+                if (chessBoard.getPointData(i, j) == ChessBoardCore::DataType::black)
                     painter.drawImage(QRect(i * 35 + 7, j * 35 + 7, 30, 30),
                                       QImage(":/img/Resources/black.png"));
-                if (chessBoard.getPointData(i, j) ==
-                    ChessBoardCore::DataType::white)
+                if (chessBoard.getPointData(i, j) == ChessBoardCore::DataType::white)
                     painter.drawImage(QRect(i * 35 + 7, j * 35 + 7, 30, 30),
                                       QImage(":/img/Resources/white.png"));
             }
@@ -55,11 +52,14 @@ void chessBoardGui::paintEvent(QPaintEvent*)
 
 void chessBoardGui::mousePressEvent(QMouseEvent* event)
 {
-    int flag = chessBoard.getFlag();
+    int                      flag = chessBoard.getFlag();
+    ChessBoardCore::PlayMode mode = chessBoard.getPlayMode();
+    if (mode == ChessBoardCore::PlayMode::server && flag == 1) return;
+    if (mode == ChessBoardCore::PlayMode::client && flag == 0) return;
+
     if (event->button() == Qt::LeftButton)
     {
-        mouseOffset =
-            event->globalPos() - pos() - parentWidget()->pos() - QPoint(30, 54);
+        mouseOffset = event->globalPos() - pos() - parentWidget()->pos() - QPoint(30, 54);
     }
     qDebug() << (mouseOffset.x()) << " " << (mouseOffset.y());
     int tx = (mouseOffset.x() + 17) / 35, ty = (mouseOffset.y() + 17) / 35;
@@ -67,15 +67,15 @@ void chessBoardGui::mousePressEvent(QMouseEvent* event)
 
     if (chessBoard.getPointData(tx, ty) == ChessBoardCore::DataType::none)
     {
-        chessBoard.setPointData(tx, ty,
-                                flag ? ChessBoardCore::DataType::white
-                                     : ChessBoardCore::DataType::black);
+        chessBoard.setPointData(
+            tx, ty,
+            flag ? ChessBoardCore::DataType::white : ChessBoardCore::DataType::black, 1);
         chessBoard.setOpt(ChessBoardCore::PaintOptType::chess);
         if (chessBoard.searchWin(flag ? ChessBoardCore::DataType::white
                                       : ChessBoardCore::DataType::black))
         {
-            if (flag)
-            { chessBoard.setOpt(ChessBoardCore::PaintOptType::whiteWin); } else
+            if (flag) { chessBoard.setOpt(ChessBoardCore::PaintOptType::whiteWin); }
+            else
             {
                 chessBoard.setOpt(ChessBoardCore::PaintOptType::blackWin);
             }
