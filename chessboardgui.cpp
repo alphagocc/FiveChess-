@@ -17,11 +17,8 @@ chessBoardGui::~chessBoardGui() { delete ui; }
 void chessBoardGui::paintEvent(QPaintEvent*)
 {
     ChessBoardCore::PaintOptType opt = chessBoard.getPaintOpt();
-    chessBoard.dataPrint();
-    auto     closeF = [&] { parentWidget()->close(); };
-    ChessBoardCore::PaintOptType opt=chessBoard.getPaintOpt();
     //chessBoard.dataPrint();
-    auto closeF=[&]{parentWidget()->close();};
+    auto     closeF = [&] { parentWidget()->close(); };
     QPainter painter;
     painter.begin(this);
     painter.drawImage(QPoint(0, 0), QImage(":/img/Resources/chessboard.jpg"));
@@ -50,16 +47,6 @@ void chessBoardGui::paintEvent(QPaintEvent*)
                     painter.drawImage(QRect(i * 35 + 7, j * 35 + 7, 30, 30),
                                       QImage(":/img/Resources/white.png"));
             }
-    if (opt==ChessBoardCore::PaintOptType::chess){
-    for (int i=0;i<15;i++)
-        for (int j=0;j<15;j++)
-        {
-            //qDebug()<<"i:"<<i<<"j:"<<j<<"data:"<<static_cast<int>(chessBoard.getPointData(i,j))<<endl;
-            if (chessBoard.getPointData(i,j)==ChessBoardCore::DataType::black)
-            painter.drawImage(QRect(i*35+7,j*35+7,30,30),QImage(":/img/Resources/black.png"));
-            if (chessBoard.getPointData(i,j)==ChessBoardCore::DataType::white)
-            painter.drawImage(QRect(i*35+7,j*35+7,30,30),QImage(":/img/Resources/white.png"));
-        }
     }
     painter.end();
 }
