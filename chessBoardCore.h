@@ -51,8 +51,7 @@ class ChessBoardCore : public QObject
     void     addUsedTime() { m_usedTime++; }
     void     setPlayMode(PlayMode m) { m_mode = m; }
     PlayMode getPlayMode() { return m_mode; }
-
-    bool setPointData(int x, int y, DataType d);
+    void     setAChess(int x, int y, DataType d);
     void setOpt(PaintOptType o)
     {
         QMutexLocker locker(&mutex);
@@ -82,6 +81,7 @@ class ChessBoardCore : public QObject
     }
   signals:
     void dataChanged(int x, int y, DataType d);
+    void needRepaint();
 };
 extern ChessBoardCore chessBoard;
 #endif // CHESSBOARDCORE_H

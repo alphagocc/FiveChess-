@@ -4,13 +4,14 @@
 
 ClientThread* clientThread;
 
-ClientThread::ClientThread(QObject* parent) : QThread(parent) { init(); }
+ClientThread::ClientThread(QObject* parent) : QThread(parent) {}
 
 void ClientThread::run()
 {
     m_tcpSocket = new QTcpSocket();
     m_tcpSocket->abort();
     m_tcpSocket->connectToHost("127.0.0.1", 23333);
+    tcpSocketInit();
 }
 
 void ClientThread::readMessage()
@@ -22,7 +23,7 @@ void ClientThread::readMessage()
     int                      y = msg[1];
     ChessBoardCore::DataType d =
         static_cast<ChessBoardCore::DataType>(static_cast<int>(msg[2]));
-    if (!chessBoard.setPointData(x, y, d, 0)) { throw std::exception("Data Error"); }
+    chessBoard.setAChess(x, y, d);
 }
 
 void ClientThread::sendMessage(QByteArray& msg)
@@ -31,7 +32,7 @@ void ClientThread::sendMessage(QByteArray& msg)
     m_tcpSocket->write(msg);
 }
 
-void ClientThread::init()
+void ClientThread::tcpSocketInit()
 {
     connect(m_tcpSocket, &QTcpSocket::readyRead, this, &ClientThread::readMessage);
     connect(&chessBoard, &ChessBoardCore::dataChanged, this,

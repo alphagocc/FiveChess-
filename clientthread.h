@@ -16,7 +16,7 @@ class ClientThread : public QThread
 
   protected:
     QTcpSocket* m_tcpSocket;
-    void        init();
+    void        tcpSocketInit();
 };
 extern ClientThread* clientThread;
 #endif CLIENTTHREAD_H

@@ -9,6 +9,7 @@
 chessBoardGui::chessBoardGui(QWidget* parent) : QFrame(parent), ui(new Ui::chessBoardGui)
 {
     ui->setupUi(this);
+    connect(&chessBoard, &ChessBoardCore::needRepaint, this, [&]{ update(); });
 }
 
 chessBoardGui::~chessBoardGui() { delete ui; }
@@ -64,24 +65,7 @@ void chessBoardGui::mousePressEvent(QMouseEvent* event)
     qDebug() << (mouseOffset.x()) << " " << (mouseOffset.y());
     int tx = (mouseOffset.x() + 17) / 35, ty = (mouseOffset.y() + 17) / 35;
     qDebug() << tx << " " << ty;
-
-    if (chessBoard.getPointData(tx, ty) == ChessBoardCore::DataType::none)
-    {
-        chessBoard.setPointData(
-            tx, ty,
-            flag ? ChessBoardCore::DataType::white : ChessBoardCore::DataType::black, 1);
-        chessBoard.setOpt(ChessBoardCore::PaintOptType::chess);
-        if (chessBoard.searchWin(flag ? ChessBoardCore::DataType::white
-                                      : ChessBoardCore::DataType::black))
-        {
-            if (flag) { chessBoard.setOpt(ChessBoardCore::PaintOptType::whiteWin); }
-            else
-            {
-                chessBoard.setOpt(ChessBoardCore::PaintOptType::blackWin);
-            }
-        }
-        repaint();
-        chessBoard.setFlag(flag ^ 1);
-    }
+    chessBoard.setAChess(
+        tx, ty, flag ? ChessBoardCore::DataType::white : ChessBoardCore::DataType::black);
 }
 void chessBoardGui::mouseReleaseEvent(QMouseEvent* event) { Q_UNUSED(event); }

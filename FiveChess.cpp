@@ -49,7 +49,7 @@ void FiveChess::loadFiveChessGame()
 
 void FiveChess::newNetworkFiveChessGame()
 {
-    QDialog*              chooseDialog   = new QDialog;
+    QDialog*              chooseDialog   = new QDialog(this);
     Ui::ChooseCorSDialog* chooseDialogUi = new Ui::ChooseCorSDialog;
     chooseDialogUi->setupUi(chooseDialog);
 
@@ -57,15 +57,15 @@ void FiveChess::newNetworkFiveChessGame()
         clientThread = new ClientThread;
         clientThread->run();
         chessBoard.setPlayMode(ChessBoardCore::PlayMode::client);
+        chooseDialog->close();
     });
     connect(chooseDialogUi->serverPushButton, &QPushButton::clicked, this, [&] {
         serverThread = new ServerThread;
         serverThread->run();
         chessBoard.setPlayMode(ChessBoardCore::PlayMode::server);
+        chooseDialog->close();
     });
-
-    chooseDialog->setModal(true);
-    chooseDialog->show();
+    chooseDialog->exec();
     newFiveChessGame();
 }
 

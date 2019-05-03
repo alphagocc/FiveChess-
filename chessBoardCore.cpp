@@ -31,35 +31,35 @@ void ChessBoardCore::clearData()
 bool ChessBoardCore::searchWin(ChessBoardCore::DataType chess)
 {
     FOR(i, 0, 11)
-    FOR(j, 0, 15) if (m_data[i][j] == chess && m_data[i + 1][j] == chess &&
-                      m_data[i + 2][j] == chess && m_data[i + 3][j] == chess &&
-                      m_data[i + 4][j] == chess) return true;
+    FOR(j, 0, 15)
+    if (m_data[i][j] == chess && m_data[i + 1][j] == chess && m_data[i + 2][j] == chess &&
+        m_data[i + 3][j] == chess && m_data[i + 4][j] == chess) return true;
 
     FOR(i, 0, 15)
-    FOR(j, 0, 11) if (m_data[i][j] == chess && m_data[i][j + 1] == chess &&
-                      m_data[i][j + 2] == chess && m_data[i][j + 3] == chess &&
-                      m_data[i][j + 4] == chess) return true;
+    FOR(j, 0, 11)
+    if (m_data[i][j] == chess && m_data[i][j + 1] == chess && m_data[i][j + 2] == chess &&
+        m_data[i][j + 3] == chess && m_data[i][j + 4] == chess) return true;
 
     FOR(i, 0, 11)
-    FOR(j, 0, 11) if (m_data[i][j] == chess && m_data[i + 1][j + 1] == chess &&
-                      m_data[i + 2][j + 2] == chess &&
-                      m_data[i + 3][j + 3] == chess &&
-                      m_data[i + 4][j + 4] == chess) return true;
+    FOR(j, 0, 11)
+    if (m_data[i][j] == chess && m_data[i + 1][j + 1] == chess &&
+        m_data[i + 2][j + 2] == chess && m_data[i + 3][j + 3] == chess &&
+        m_data[i + 4][j + 4] == chess) return true;
 
     FOR(i, 0, 11)
-    FOR(j, 4, 15) if (m_data[i][j] == chess && m_data[i + 1][j - 1] == chess &&
-                      m_data[i + 2][j - 2] == chess &&
-                      m_data[i + 3][j - 3] == chess &&
-                      m_data[i + 4][j - 4] == chess) return true;
+    FOR(j, 4, 15)
+    if (m_data[i][j] == chess && m_data[i + 1][j - 1] == chess &&
+        m_data[i + 2][j - 2] == chess && m_data[i + 3][j - 3] == chess &&
+        m_data[i + 4][j - 4] == chess) return true;
 
     return false;
 }
 
 bool ChessBoardCore::saveBoard()
 {
-    QString fileName = QFileDialog::getSaveFileName(
-        nullptr, tr("Save Chess Board File"), QString("."),
-        tr("ChessBoardFile(*.chessbrd)"));
+    QString fileName =
+        QFileDialog::getSaveFileName(nullptr, tr("Save Chess Board File"), QString("."),
+                                     tr("ChessBoardFile(*.chessbrd)"));
     if (!fileName.isNull())
     {
         QFile file(fileName);
@@ -74,8 +74,7 @@ bool ChessBoardCore::saveBoard()
         {
             FOR(j, 0, 15)
             {
-                file.write(
-                    QString("%1").arg(static_cast<int>(m_data[i][j])).toUtf8());
+                file.write(QString("%1").arg(static_cast<int>(m_data[i][j])).toUtf8());
             }
         }
         file.close();
@@ -86,9 +85,9 @@ bool ChessBoardCore::saveBoard()
 
 bool ChessBoardCore::loadBoard()
 {
-    QString filename = QFileDialog::getOpenFileName(
-        nullptr, tr("Open Chess Board File"), QString("."),
-        tr("ChessBoardFile(*.chessbrd)"));
+    QString filename =
+        QFileDialog::getOpenFileName(nullptr, tr("Open Chess Board File"), QString("."),
+                                     tr("ChessBoardFile(*.chessbrd)"));
     if (!filename.isNull())
     {
         QFile file(filename);
@@ -135,7 +134,7 @@ void ChessBoardCore::init()
     m_usedTime = 0;
 }
 
-bool ChessBoardCore::setPointData(int x, int y, DataType d,int s=1)
+bool ChessBoardCore::setPointData(int x, int y, DataType d, int s = 1)
 {
     if (x < 0 || y < 0 || x >= 15 || y >= 15)
         return false;
@@ -143,7 +142,26 @@ bool ChessBoardCore::setPointData(int x, int y, DataType d,int s=1)
     {
         QMutexLocker locker(&mutex);
         m_data[x][y] = d;
-        if (s==1) emit dataChanged(x, y, d);
+        emit needRepaint();
+        if (s == 1) emit dataChanged(x, y, d);
         return true;
+    }
+}
+
+void ChessBoardCore::setAChess(int x, int y, ChessBoardCore::DataType d)
+{
+    if (chessBoard.getPointData(x, y) == ChessBoardCore::DataType::none)
+    {
+        chessBoard.setOpt(ChessBoardCore::PaintOptType::chess);
+        chessBoard.setPointData(x, y, d, 1);
+        if (chessBoard.searchWin(d))
+        {
+            if (m_flag) { chessBoard.setOpt(ChessBoardCore::PaintOptType::whiteWin); }
+            else
+            {
+                chessBoard.setOpt(ChessBoardCore::PaintOptType::blackWin);
+            }
+        }
+        m_flag ^= 1;
     }
 }
