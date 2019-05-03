@@ -21,7 +21,7 @@ chessBoardGui::~chessBoardGui()
 void chessBoardGui::paintEvent(QPaintEvent *)
 {
     ChessBoardCore::PaintOptType opt=chessBoard.getPaintOpt();
-    chessBoard.dataPrint();
+    //chessBoard.dataPrint();
     auto closeF=[&]{parentWidget()->close();};
     QPainter painter;
     painter.begin(this);
@@ -40,7 +40,7 @@ void chessBoardGui::paintEvent(QPaintEvent *)
     for (int i=0;i<15;i++)
         for (int j=0;j<15;j++)
         {
-            qDebug()<<"i:"<<i<<"j:"<<j<<"data:"<<static_cast<int>(chessBoard.getPointData(i,j))<<endl;
+            //qDebug()<<"i:"<<i<<"j:"<<j<<"data:"<<static_cast<int>(chessBoard.getPointData(i,j))<<endl;
             if (chessBoard.getPointData(i,j)==ChessBoardCore::DataType::black)
             painter.drawImage(QRect(i*35+7,j*35+7,30,30),QImage(":/img/Resources/black.png"));
             if (chessBoard.getPointData(i,j)==ChessBoardCore::DataType::white)
