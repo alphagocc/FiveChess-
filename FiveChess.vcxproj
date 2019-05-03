@@ -56,12 +56,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">FiveChess</TargetName>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</IgnoreImportLibrary>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">FiveChess</TargetName>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</IgnoreImportLibrary>
   </PropertyGroup>
@@ -74,11 +74,12 @@
       <DebugInformationFormat>None</DebugInformationFormat>
       <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ObjectFileName>release\</ObjectFileName>
       <Optimization>MaxSpeed</Optimization>
       <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
-      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>
+      </ProgramDataBaseFileName>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -140,7 +141,7 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4577;4467;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
-      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ObjectFileName>debug\</ObjectFileName>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;QT_DEPRECATED_WARNINGS;QT_WIDGETS_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_CORE_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessToFile>false</PreprocessToFile>
@@ -149,7 +150,6 @@
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <WarningLevel>Level3</WarningLevel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Networkd.lib;$(QTDIR)\lib\Qt5Cored.lib;$(QTDIR)\lib\qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -200,10 +200,11 @@
     <ClCompile Include="battlegui.cpp" />
     <ClCompile Include="chessboardcore.cpp" />
     <ClCompile Include="chessboardgui.cpp" />
+    <ClCompile Include="clientthread.cpp" />
     <ClCompile Include="fivechess.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="networksettingdialog.cpp" />
-    <ClCompile Include="networkthread.cpp" />
+    <ClCompile Include="serverthread.cpp" />
     <ClCompile Include="waitdialog.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -213,10 +214,13 @@
     </QtMoc>
     <QtMoc Include="chessboardgui.h">
     </QtMoc>
+    <QtMoc Include="clientthread.h">
+    </QtMoc>
     <QtMoc Include="fivechess.h">
     </QtMoc>
     <ClInclude Include="networksettingdialog.h" />
-    <ClInclude Include="networkthread.h" />
+    <QtMoc Include="serverthread.h">
+    </QtMoc>
     <QtMoc Include="waitdialog.h">
     </QtMoc>
   </ItemGroup>
@@ -248,6 +252,9 @@
     <None Include="zh_CN.ts" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="chooseCorS.ui">
+      <SubType>Designer</SubType>
+    </QtUic>
     <QtUic Include="FiveChess.ui">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_FiveChess.h</OutputFile>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_FiveChess.h</OutputFile>
@@ -255,6 +262,7 @@
     <QtUic Include="battlegui.ui">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_battlegui.h</OutputFile>
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ui_battlegui.h</OutputFile>
+      <SubType>Designer</SubType>
     </QtUic>
     <QtUic Include="chessboardgui.ui">
       <OutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ui_chessboardgui.h</OutputFile>
@@ -286,9 +294,4 @@
     <Import Project="$(QtMsBuild)\qt.targets" />
   </ImportGroup>
   <ImportGroup Label="ExtensionTargets" />
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties Qt5Version_x0020_Win32="msvc2017" />
-    </VisualStudio>
-  </ProjectExtensions>
 </Project>

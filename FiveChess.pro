@@ -49,7 +49,8 @@ FORMS += \
     FiveChess.ui \
     chessboardgui.ui \
     waitdialog.ui \
-    networksettingdialog.ui
+    networksettingdialog.ui \
+	chooseCorS.ui
 
 RESOURCES += \
     fivechessresources.qrc

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>654</width>
-    <height>553</height>
+    <width>681</width>
+    <height>557</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -58,11 +58,14 @@
      <property name="title">
       <string/>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0" rowminimumheight="0,0,0">
-      <item row="0" column="0" colspan="2">
-       <widget class="QPushButton" name="pushButtonExit">
+     <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0" rowminimumheight="0,0,0,0">
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="labelTime">
         <property name="text">
-         <string>Exit</string>
+         <string>Time：</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -73,10 +76,17 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="QLabel" name="labelTime">
+      <item row="0" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButtonExit">
         <property name="text">
-         <string>Time：</string>
+         <string>Exit</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QLabel" name="labelColor">
+        <property name="text">
+         <string>Waiting:</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>

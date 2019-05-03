@@ -1,11 +1,12 @@
 #ifndef FIVECHESS_H
 #define FIVECHESS_H
 
-#include <QMainWindow>
 #include "chessboardcore.h"
+#include <QMainWindow>
 #include <QTranslator>
 
-namespace Ui {
+namespace Ui
+{
 class FiveChess;
 }
 
@@ -13,19 +14,21 @@ class FiveChess : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    explicit FiveChess(QWidget *parent = 0);
+  public:
+    explicit FiveChess(QWidget* parent = 0);
     ~FiveChess();
 
-private:
-    Ui::FiveChess *ui;
-	QTranslator *tsor;
-public slots:
+  private:
+    Ui::FiveChess* ui;
+    QTranslator*   tsor;
+  public slots:
     void newFiveChessGame();
     void loadFiveChessGame();
-public :
+    void newNetworkFiveChessGame();
+
+  public:
     void translateUi(int value);
-	void setTranslator(QTranslator *tsor) { this->tsor = tsor; }
+    void setTranslator(QTranslator* tsor) { this->tsor = tsor; }
 };
 
 #endif // FIVECHESS_H
