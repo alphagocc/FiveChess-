@@ -1,35 +1,17 @@
-/*#include "networksettingdialog.h"
+#include "networksettingdialog.h"
+#include "networksettings.h"
 #include "ui_networksettingdialog.h"
-#include <QMessageBox>
-#include <QFile>
+#include <QDebug>
 
-networkSettingDialog::networkSettingDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::networkSettingDialog)
+NetworkSettingDialog::NetworkSettingDialog(QWidget* parent)
+    : QDialog(parent), ui(new Ui::networkSettingDialog)
 {
     ui->setupUi(this);
-    connect(ui->buttonBox,&QDialogButtonBox::accepted,this,[&]()
-    {
-        QFile *file=new QFile(QString("conf.conf"));
-        if (!file->open(QFile::WriteOnly|QFile::Text))
-        {
-            file->write(QByteArray(ui->lineEdit->text()+"\n"+ui->lineEdit_2->text()));
-            file->close();
-        }else
-        {
-            QMessageBox::critical(this,
-                                  tr("Error!The Configuration File Can't Write!"),
-                                  tr("The Configuration File Can't Write!\n"
-                                     "Please check and try again."),
-                                  QMessageBox::Ok,
-                                  QMessageBox::Cancel);
-        }
-        parent->networkFiveChessGame();
+    connect(ui->buttonBox, &QDialogButtonBox::accepted, this, [&] {
+        qDebug() << ui->lineEdit->text() << " " << ui->lineEdit_2->text().toInt();
+        networkSettings["port"] = ui->lineEdit_2->text().toInt();
+        networkSettings["host"] = ui->lineEdit->text();
     });
 }
 
-networkSettingDialog::~networkSettingDialog()
-{
-    delete ui;
-}
-*/
+NetworkSettingDialog::~NetworkSettingDialog() { delete ui; }

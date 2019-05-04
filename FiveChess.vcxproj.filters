@@ -78,6 +78,9 @@
     <ClCompile Include="networksettingdialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="networksettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="serverthread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -101,7 +104,7 @@
     <QtMoc Include="fivechess.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClInclude Include="networksettingdialog.h">
+    <ClInclude Include="networksettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <QtMoc Include="serverthread.h">
@@ -109,6 +112,9 @@
     </QtMoc>
     <QtMoc Include="waitdialog.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="networksettingdialog.h">
+      <Filter>Generated Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -152,13 +158,13 @@
     <QtUic Include="chessboardgui.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="chooseCorS.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
     <QtUic Include="networksettingdialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="waitdialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="chooseCorS.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

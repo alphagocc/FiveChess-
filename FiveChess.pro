@@ -32,7 +32,8 @@ SOURCES += \
     networksettingdialog.cpp \
     serverthread.cpp \
 	clientthread.cpp \
-    chessboardcore.cpp
+    chessboardcore.cpp \
+	networksettings.cpp
 
 HEADERS += \
     battlegui.h \
@@ -42,7 +43,8 @@ HEADERS += \
     networksettingdialog.h \
     serverthread.h \
 	clientthread.h \
-    chessboardcore.h
+    chessboardcore.h \
+	networksettings.h
 
 FORMS += \
     battlegui.ui \

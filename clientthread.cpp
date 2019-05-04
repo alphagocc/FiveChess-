@@ -1,5 +1,6 @@
 #include "clientthread.h"
 #include "chessboardcore.h"
+#include "networksettings.h"
 #include <QDebug>
 
 ClientThread* clientThread;
@@ -10,7 +11,10 @@ void ClientThread::run()
 {
     m_tcpSocket = new QTcpSocket();
     m_tcpSocket->abort();
-    m_tcpSocket->connectToHost("127.0.0.1", 23333);
+    m_tcpSocket->connectToHost(networkSettings["host"].toString(),
+                               networkSettings["port"].toInt());
+    qDebug() << networkSettings["host"].toString()
+             << networkSettings["port"].toInt();
     tcpSocketInit();
 }
 

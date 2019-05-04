@@ -49,7 +49,10 @@ void FiveChess::loadFiveChessGame()
 
 void FiveChess::newNetworkFiveChessGame()
 {
-    QDialog*              chooseDialog   = new QDialog(this);
+    NetworkSettingDialog settingDialog;
+    settingDialog.exec();
+	
+	QDialog*              chooseDialog   = new QDialog(this);
     Ui::ChooseCorSDialog* chooseDialogUi = new Ui::ChooseCorSDialog;
     chooseDialogUi->setupUi(chooseDialog);
 
@@ -66,6 +69,7 @@ void FiveChess::newNetworkFiveChessGame()
         chooseDialog->close();
     });
     chooseDialog->exec();
+
     newFiveChessGame();
 }
 

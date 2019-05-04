@@ -1,4 +1,4 @@
-/*#ifndef NETWORKSETTINGDIALOG_H
+#ifndef NETWORKSETTINGDIALOG_H
 #define NETWORKSETTINGDIALOG_H
 
 #include <QDialog>
@@ -7,17 +7,17 @@ namespace Ui {
 class networkSettingDialog;
 }
 
-class networkSettingDialog : public QDialog
+class NetworkSettingDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit networkSettingDialog(QWidget *parent = 0);
-    ~networkSettingDialog();
+    explicit NetworkSettingDialog(QWidget *parent = 0);
+    ~NetworkSettingDialog();
 
 private:
     Ui::networkSettingDialog *ui;
 };
 
 #endif // NETWORKSETTINGDIALOG_H
-*/
+

@@ -4,20 +4,38 @@
 <context>
     <name>ChessBoardCore</name>
     <message>
-        <location filename="chessboardcore.cpp" line="66"/>
+        <location filename="chessboardcore.cpp" line="65"/>
         <source>Save Chess Board File</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="chessboardcore.cpp" line="68"/>
-        <location filename="chessboardcore.cpp" line="95"/>
+        <location filename="chessboardcore.cpp" line="66"/>
+        <location filename="chessboardcore.cpp" line="98"/>
         <source>ChessBoardFile(*.chessbrd)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="chessboardcore.cpp" line="93"/>
+        <location filename="chessboardcore.cpp" line="97"/>
         <source>Open Chess Board File</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>ChooseCorSDialog</name>
+    <message>
+        <location filename="chooseCorS.ui" line="14"/>
+        <source>Dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="chooseCorS.ui" line="29"/>
+        <source>Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="chooseCorS.ui" line="36"/>
+        <source>Client</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -78,8 +96,8 @@
     </message>
     <message>
         <location filename="battlegui.ui" line="89"/>
-        <source>Now：</source>
-        <translation></translation>
+        <source>Waiting:</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="battlegui.ui" line="75"/>
@@ -92,15 +110,25 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="battlegui.cpp" line="12"/>
-        <location filename="battlegui.cpp" line="20"/>
+        <location filename="battlegui.cpp" line="10"/>
+        <location filename="battlegui.cpp" line="17"/>
         <source>Time:%1 Second</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="battlegui.cpp" line="23"/>
-        <source>Now:%1 </source>
-        <translation></translation>
+        <location filename="battlegui.cpp" line="21"/>
+        <source>Waiting:%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="battlegui.cpp" line="21"/>
+        <source>White</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="battlegui.cpp" line="21"/>
+        <source>Black</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
